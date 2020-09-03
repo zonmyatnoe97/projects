@@ -78,12 +78,15 @@ function displayCars() {
   cars[1].type + " " + cars[1].year + "<br>" +
   cars[2].type + " " + cars[2].year;
 }
-
+/*Find Lamboghini
+return object*/
 function findLambo(cars) { 
     return cars.type === "Lamboghini";
 }
 console.log(cars.find(findLambo));
 
+/*Check BMW include or not
+return boolean*/
 function checkBMW(){
   if(cars.some((cars)=> cars.type === "BMW")){
     return true;
@@ -93,18 +96,18 @@ function checkBMW(){
 }
 console.log(checkBMW());
 
-function checkBmwIndex(){
-  var carType = cars.map((cars)=> cars.type);
-  return indexOfBmw = carType.indexOf("BMW");
-}
-console.log(checkBmwIndex());
+/*find index of BMW*/
+index = cars.findIndex(car => car.type ==="BMW");
+console.log(index);
 
+/*Movie array*/
 var movie = [
   {type:"Titanic", year:1997},
   {type:"Hachiko", year:2013},
   {type:"Weathering With you", year:2018}
 ];
 
+/*add new attribute in array*/
 function addAttribute(arr, type, property, value) {
   arr.forEach(o => {
     if (o.type === type) Object.assign(o, {[property]: value});
@@ -113,11 +116,16 @@ function addAttribute(arr, type, property, value) {
 addAttribute(movie, 'Titanic', 'recommendation', 'Excellent');
 console.log(movie);
 
-// function addYear(){
-//   var addYear = movie.map( (movie) => movie.year);
-//   return addYear.value + 3;
-// }
-// console.log(addYear());
+// var result = movie.reduce(function(sum, movieyear){
+// 	return sum = movieyear.year+3;
+// },0);
+// console.log(result);
+
+function addYear(){
+  var addYear = movie.map((movie) => movie.year);
+  return addYear.value + 3;
+}
+console.log(addYear());
 
 // var addYear = movie.map(addThreeYear);
 // document.getElementById("demo6").innerHTML = addYear;
