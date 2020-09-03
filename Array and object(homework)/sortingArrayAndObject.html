@@ -28,6 +28,9 @@
 <button onclick="reverseObject()">Sort</button>
 <p id="demo4"></p>
 
+<h2>Add 3 years to existing year</h2>
+<p id="demo6"></p>
+
 <script>
 // Create and display an array:
 var fruits = ["Banana", "Orange", "Apple", "Mango"];
@@ -57,9 +60,12 @@ function numberReverse() {
 
 var cars = [
   {type:"Mercedes", year:2016},
-  {type:"Lamboghi", year:2001},
+  {type:"Lamboghini", year:2001},
   {type:"BMW", year:2010}
 ];
+
+
+
 displayCars();
 
 function sortObject() {
@@ -73,11 +79,51 @@ function displayCars() {
   cars[2].type + " " + cars[2].year;
 }
 
+function findLambo(cars) { 
+    return cars.type === "Lamboghini";
+}
+console.log(cars.find(findLambo));
+
+function checkBMW(){
+  if(cars.some((cars)=> cars.type === "BMW")){
+    return true;
+  }else{
+    return false;
+    }
+}
+console.log(checkBMW());
+
+function checkBmwIndex(){
+  var carType = cars.map((cars)=> cars.type);
+  return indexOfBmw = carType.indexOf("BMW");
+}
+console.log(checkBmwIndex());
+
 var movie = [
   {type:"Titanic", year:1997},
   {type:"Hachiko", year:2013},
   {type:"Weathering With you", year:2018}
 ];
+
+function addAttribute(arr, type, property, value) {
+  arr.forEach(o => {
+    if (o.type === type) Object.assign(o, {[property]: value});
+  });
+}
+addAttribute(movie, 'Titanic', 'recommendation', 'Excellent');
+console.log(movie);
+
+// function addYear(){
+//   var addYear = movie.map( (movie) => movie.year);
+//   return addYear.value + 3;
+// }
+// console.log(addYear());
+
+// var addYear = movie.map(addThreeYear);
+// document.getElementById("demo6").innerHTML = addYear;
+// function addThreeYear(value, index, movie) {
+//   return value + 3;
+// }
 
 displayMovie();
 
