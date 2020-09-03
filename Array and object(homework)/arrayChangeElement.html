@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Changing Element</title>
+</head>
+<body>
+  <h2>Splice Method</h2>
+   <p id="demo"></p>
+   <button onclick="myFunction()">Try it</button>
+
+  <h2>Slice Method</h2>
+  <p>This  example slices out a part of an array starting from array element 4 ("Coconut")</p>
+  <p id="demo2"></p>
+  <button onclick="slice()">Try it</button>
+
+  <h2>Slice with argument</h2>
+  <p>When the slice() method is given two arguments, it selects array elements from the start argument, and up to (but not included) the end argument:</p>
+  <p id="demo5"></p>
+  <button onclick="sliceArgument()">Try it</button>
+
+   <script>
+       var fruits =["Banana","Apple","Grape","Mango"];
+       document.getElementById("demo").innerHTML = fruits;
+       function myFunction() {
+           fruits[0]="Kiwi";
+           document.getElementById("demo").innerHTML = fruits;
+           fruits[3]="Kiwi";
+           document.getElementById("demo3").innerHTML = fruits;
+       }
+
+       var fruit =["Banana","Apple","Grape","Mango","Coconut","Strawberry","Cherry","Lemon"];
+       document.getElementById("demo2").innerHTML = fruit;
+       function slice() {
+        var newFruitList = fruit.slice(4);
+        document.getElementById("demo2").innerHTML = fruit + "<br><br>" + newFruitList;
+       }
+       document.getElementById("demo5").innerHTML = fruit;
+        function sliceArgument(){
+          var citrus = fruit.slice(1,7);
+          document.getElementById("demo5").innerHTML = fruit + "<br><br>" + citrus;
+       }
+
+   </script>
+</body>
+</html>

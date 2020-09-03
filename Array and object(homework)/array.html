@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Js array pop and push</title>
+</head>
+<body>
+  <h1>Sample Array</h1>
+    <p id="demo1"></p>
+    <h2>pop method</h2>
+    <p id="demo2"></p>
+    <h2>push method</h2>
+    <p id="demo3"></p>
+    <h2>shifting element</h2>
+    <p id="demo4"></p>
+    <h2>ToStringMethod</h2>
+    <p>The toString() method returns an array as a comma separated string:</p>
+    <p id="demo5"></p>
+    <h2>concat()</h2>
+    <p>The concat() method is used to merge (concatenate) arrays:</p>
+    <p id="demo6"></p>
+    <script>
+        var fruits = ["Banana","Orange","Apple","strawberry","coconut","cherry","Mango"];
+        document.getElementById("demo1").innerHTML = fruits;
+        fruits.pop();
+        document.getElementById("demo2").innerHTML = fruits;
+        fruits.push("Kiwi");
+        document.getElementById("demo3").innerHTML = fruits;
+        fruits.shift();
+        document.getElementById("demo4").innerHTML = fruits;
+        fruits.unshift("Lemon");
+        document.getElementById("demo5").innerHTML = fruits;
+        fruits.toString();
+        var cats = ["kitty", "tommy"];
+        var dogs = ["lucky", "pony", "pom"];
+        var mixCatAndDogs = cats.concat(dogs);
+        document.getElementById("demo6").innerHTML = mixCatAndDogs;
+    </script>
+</body>
+</html>
