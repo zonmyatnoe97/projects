@@ -106,8 +106,8 @@ var movie = [
 ];
 
 function addAttribute(arr, type, property, value) {
-  arr.forEach(movie => {
-    if (movie.type === type) Object.assign(o, {[property]: value});
+  arr.forEach(o => {
+    if (o.type === type) Object.assign(o, {[property]: value});
   });
 }
 addAttribute(movie, 'Titanic', 'recommendation', 'Excellent');
