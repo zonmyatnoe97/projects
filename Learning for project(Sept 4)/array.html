@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h1>Student List</h1>
+<p id="demo"></p>
+
+<script>
+
+var student = [
+{name:"Thae Zarli", year: 1998, mark: 90},
+{name:"Zon Myat", year: 1997, mark: 99},
+{name:"Su Myat", year: 1998, mark: 95},
+];
+
+displayStudent();
+
+function displayStudent() {
+  document.getElementById("demo").innerHTML =
+  student[0].name + " " + student[0].year + " " + student[0].mark + "<br>" +
+  student[1].name + " " + student[1].year + " " + student[1].mark + "<br>" +
+  student[2].name + " " + student[2].year + " " + student[2].mark;
+}
+/*Find by student name
+return object*/
+function findStudentByName(student) { 
+    return student.name === "Thae Zarli";
+}
+console.log(student.find(findStudentByName));
+
+/*Get total marks of students*/
+function getTotalMarkOfStudents(){
+const sum = student.reduce((student, {mark}) => student + mark, 0);
+console.log("Total Marks is " + sum);
+}
+getTotalMarkOfStudents();
+
+/*Add last name*/
+function addFullName(firstName, lastName){
+  /*find index
+  return name*/
+  var index = student.findIndex((student) => {
+  return student.name == firstName;
+  });
+  /*add second name*/
+  student[index].name = student[index].name + " " +lastName;
+  console.log(student);
+}
+addFullName("Thae Zarli","Win");
+addFullName("Zon Myat","Noe");
+addFullName("Su Myat","Noe Oo");
+</script>
+
+</body>
+</html>
