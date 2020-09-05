@@ -1,54 +1,104 @@
 <!DOCTYPE html>
 <html>
-<body>
-<h1>Student List</h1>
-<p id="demo"></p>
+  <body>
+    <h1>Student List</h1>
+    <p id="demo"></p>
 
-<script>
+    <script>
+      var student = [
+        { name: "Thae Zarli", year: 1998, mark: 90 },
+        { name: "Zon Myat", year: 1997, mark: 99 },
+        { name: "Su Myat", year: 1998, mark: 95 },
+      ];
 
-var student = [
-{name:"Thae Zarli", year: 1998, mark: 90},
-{name:"Zon Myat", year: 1997, mark: 99},
-{name:"Su Myat", year: 1998, mark: 95},
-];
+      displayStudent();
 
-displayStudent();
+      function displayStudent() {
+        document.getElementById("demo").innerHTML =
+          student[0].name +
+          " " +
+          student[0].year +
+          " " +
+          student[0].mark +
+          "<br>" +
+          student[1].name +
+          " " +
+          student[1].year +
+          " " +
+          student[1].mark +
+          "<br>" +
+          student[2].name +
+          " " +
+          student[2].year +
+          " " +
+          student[2].mark;
+      }
+      /*Find by student name
+      return object*/
+      function findStudentByName(student) {
+        return student.name === "Thae Zarli";
+      }
+      console.log(student.find(findStudentByName));
 
-function displayStudent() {
-  document.getElementById("demo").innerHTML =
-  student[0].name + " " + student[0].year + " " + student[0].mark + "<br>" +
-  student[1].name + " " + student[1].year + " " + student[1].mark + "<br>" +
-  student[2].name + " " + student[2].year + " " + student[2].mark;
-}
-/*Find by student name
-return object*/
-function findStudentByName(student) { 
-    return student.name === "Thae Zarli";
-}
-console.log(student.find(findStudentByName));
+      /*Get total marks of students*/
+      function getTotalMarkOfStudents() {
+        const sum = student.reduce((student, { mark }) => student + mark, 0);
+        console.log("Total Marks is " + sum);
+      }
+      getTotalMarkOfStudents();
 
-/*Get total marks of students*/
-function getTotalMarkOfStudents(){
-const sum = student.reduce((student, {mark}) => student + mark, 0);
-console.log("Total Marks is " + sum);
-}
-getTotalMarkOfStudents();
+      /*Add last name*/
+      function addFullName(firstName, lastName) {
+        /*find index
+        return name*/
+        var index = student.findIndex((student) => {
+          return student.name == firstName;
+        });
+        /*add second name*/
+        student[index].name = student[index].name + " " + lastName;
+        console.log(student);
+      }
+      addFullName("Thae Zarli", "Win");
+      addFullName("Zon Myat", "Noe");
+      addFullName("Su Myat", "Noe Oo");
 
-/*Add last name*/
-function addFullName(firstName, lastName){
-  /*find index
-  return name*/
-  var index = student.findIndex((student) => {
-  return student.name == firstName;
-  });
-  /*add second name*/
-  student[index].name = student[index].name + " " +lastName;
-  console.log(student);
-}
-addFullName("Thae Zarli","Win");
-addFullName("Zon Myat","Noe");
-addFullName("Su Myat","Noe Oo");
-</script>
+      /*get average mark of student
+       */
+      function calculateAverageByMark() {
+        const average = (averagemark) => {
+          const total = student
+            .map((mark) => mark[averagemark])
+            .reduce((a, c) => a + c);
+          return total / student.length;
+        };
+        const marks = average("mark");
+        console.log("Average mark of all students is " + marks);
+      }
+      calculateAverageByMark();
 
-</body>
+      /*Check student is exist or not
+      return boolean*/
+      function checkStudent(studentName) {
+        var name = student.some((student) => {
+          return student.name == studentName;
+        });
+        console.log("Student name " + studentName + " is " + name);
+      }
+      checkStudent("Zon Myat Noe");
+      checkStudent("Su Myat Noe Oo");
+      checkStudent("Thae Zarli Win");
+      checkStudent("Absent");
+      checkStudent("Noone");
+
+      /*check birth year greather than 1996
+      return boolean*/
+      function checkBirthYear() {
+        var year = student.every((student) => {
+          return student.year > 1996;
+        });
+        console.log("Is all birth year are greather than 1996? \n" + year);
+      }
+      checkBirthYear();
+    </script>
+  </body>
 </html>
